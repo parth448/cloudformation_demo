@@ -1,29 +1,18 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Description: CloudFormation template to create an S3 bucket and an SQS queue
+Description: Create S3 bucket and SQS queue with unique suffix
+ 
+Parameters:
+  UniqueSuffix:
+    Type: String
+    Description: Unique suffix for resource names
  
 Resources:
- 
-  VidhiS3Bucket:
+  MyS3Bucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: parths3bucket
-      PublicAccessBlockConfiguration:
-        BlockPublicAcls: true
-        BlockPublicPolicy: true
-        IgnorePublicAcls: true
-        RestrictPublicBuckets: true
+      BucketName: !Sub "parth-bucket-${UniqueSuffix}"
  
-  VidhiSQSQueue:
+  MySQSQueue:
     Type: AWS::SQS::Queue
     Properties:
-      QueueName: parth-cloudformation-qeue
- 
-Outputs:
- 
-  S3BucketName:
-    Description: Name of the created S3 bucket
-    Value: !Ref Parths3bucket
- 
-  SQSQueueURL:
-    Description: URL of the created SQS queue
-    Value: !Ref ParthSQSQueue
+      QueueName: !Sub "parth-queue-${UniqueSuffix}"
