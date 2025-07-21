@@ -18,7 +18,7 @@ Resources:
 
     Properties:
 
-      BucketName: !Sub "utkarsh-bucket-${UniqueSuffix}"
+      BucketName: !Sub "parth-bucket-${UniqueSuffix}"
  
   MySQSQueue:
 
@@ -26,7 +26,7 @@ Resources:
 
     Properties:
 
-      QueueName: !Sub "utkarsh-queue-${UniqueSuffix}"
+      QueueName: !Sub "parth-queue-${UniqueSuffix}"
  
   MyEC2Instance:
 
@@ -36,7 +36,7 @@ Resources:
 
       ImageId: ami-03bb6d83c60fc5f7c  # ✅ Valid AMI for ap-south-1
 
-      InstanceType: t2.micro
+      InstanceType: t3.micro
 
       SecurityGroups:
 
